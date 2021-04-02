@@ -9,6 +9,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    @posts = Post.where(article_id: params[:id])
+    @post = Post.new
   end
 
   # GET /articles/new
