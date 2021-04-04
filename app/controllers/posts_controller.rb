@@ -6,7 +6,9 @@ class PostsController < ApplicationController
     
     def create
       @post = Post.new(post_params)
-      redirect_to article_path()
+      @post.save
+      redirect_to article_path(params[:post]['article_id'])
+      
     end
     
     def index
@@ -20,7 +22,7 @@ class PostsController < ApplicationController
     private
     
     def post_params
-      params.require(:post).permit(:body)
+      params.require(:post).permit(:body, :name, :article_id)
     end
     
 end
