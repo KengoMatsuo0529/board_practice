@@ -9,8 +9,14 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    @article = Article.find(params[:id])
     @posts = Post.where(article_id: params[:id])
-    @post = Post.new
+    @post = Post.new(post_params)
+    # if @post.save
+    #   redirect_to article_path(@article)
+    # else 
+    #   redirect_to articles_path
+    # end
   end
 
   # GET /articles/new
@@ -68,5 +74,9 @@ class ArticlesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def article_params
       params.require(:article).permit(:content, :title)
+    end
+    
+    def post_params
+      params.permit(:body)
     end
 end

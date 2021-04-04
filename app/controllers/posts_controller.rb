@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     
     def create
       @post = Post.new(post_params)
-      redirect_to posts_path
+      redirect_to article_path()
     end
     
     def index
@@ -16,8 +16,6 @@ class PostsController < ApplicationController
     def edit
       @post = Post.find(params[:id])
     end
-    
-    def
     
     private
     
